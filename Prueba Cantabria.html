@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renfe Cantabria - Servicios Mínimos</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI', Arial, sans-serif;
+    background:#640554;
+    padding:20px;
+}
+
+/* CABECERA */
+
+.cabecera{
+
+    max-width:1200px;
+    margin:0 auto 25px auto;
+
+    background:linear-gradient(
+        90deg,
+        #7a0a60 0%,
+        #9b0f67 25%,
+        #c00060 55%,
+        #e10068 80%,
+        #ff4a93 100%
+    );
+
+    border-radius:20px;
+    padding:20px 30px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+.cabecera-contenido{
+
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.logo-renfe{
+
+    width:90px;
+    height:auto;
+    display:block;
+    flex-shrink:0;
+}
+
+.titulo h1{
+
+    color:white;
+    font-size:56px;
+    font-weight:700;
+    line-height:1;
+}
+
+.titulo h2{
+
+    color:white;
+    font-size:24px;
+    font-weight:300;
+    margin-top:6px;
+}
+
+/* CONTENEDOR */
+
+.card{
+
+    max-width:1200px;
+    margin:auto;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.20);
+}
+
+/* BUSCADOR */
+
+.buscador{
+
+    background:linear-gradient(
+        90deg,
+        #7a0a60 0%,
+        #9b0f67 25%,
+        #c00060 55%,
+        #e10068 80%,
+        #ff4a93 100%
+    );
+
+    border-radius:15px;
+
+    padding:25px;
+
+    margin-bottom:25px;
+}
+
+.buscador h3{
+
+    color:white;
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    font-size:28px;
+}
+
+.selector{
+
+    background:white;
+
+    border-radius:12px;
+
+    padding:10px 15px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.icono{
+    color:#640554;
+    font-size:20px;
+}
+
+select{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:16px;
+
+    padding:12px;
+}
+
+/* VISOR */
+
+#visor{
+    text-align:center;
+}
+
+#visor img{
+
+    width:100%;
+    max-width:1100px;
+
+    height:auto;
+
+    border-radius:12px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.mensaje{
+
+    padding:60px 20px;
+
+    color:#666;
+
+    font-size:18px;
+}
+
+/* PIE */
+
+footer{
+
+    text-align:center;
+
+    color:white;
+
+    margin-top:20px;
+
+    font-size:13px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .logo-renfe{
+        width:65px;
+    }
+
+    .titulo h1{
+        font-size:38px;
+    }
+
+    .titulo h2{
+        font-size:18px;
+    }
+
+    .card{
+        padding:20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="cabecera">
+
+    <div class="cabecera-contenido">
+
+        <img
+            src="imagenes/galleta-renfe.png"
+            alt="Renfe"
+            class="logo-renfe"
+        >
+
+        <div class="titulo">
+            <h1>RENFE</h1>
+            <h2>Cantabria</h2>
+        </div>
+
+    </div>
+
+</header>
+
+<div class="card">
+
+    <div class="buscador">
+
+        <h3>
+            Consulta de cuadros horarios de servicios mínimos
+        </h3>
+
+        <div class="selector">
+
+            <span class="icono">🔎</span>
+
+            <select id="horario" onchange="mostrarHorario()">
+
+                <option value="">
+                    Seleccione una línea
+                </option>
+
+                <optgroup label="C1">
+                    <option value="c1_sr">Santander → Reinosa</option>
+                    <option value="c1_rs">Reinosa → Santander</option>
+                </optgroup>
+
+                <optgroup label="C2">
+                    <option value="c2_sc">Santander → Cabezón de la Sal</option>
+                    <option value="c2_cs">Cabezón de la Sal → Santander</option>
+                </optgroup>
+
+                <optgroup label="C3">
+                    <option value="c3_sl">Santander → Liérganes</option>
+                    <option value="c3_ls">Liérganes → Santander</option>
+                </optgroup>
+
+                <optgroup label="R2">
+                    <option value="r2">
+                        Oviedo-Santander / Santander-Oviedo
+                    </option>
+                </optgroup>
+
+                <optgroup label="R3">
+                    <option value="r3">
+                        Santander-Bilbao La Concordia / Bilbao La Concordia-Santander
+                    </option>
+                </optgroup>
+
+            </select>
+
+        </div>
+
+    </div>
+
+    <div id="visor">
+
+        <div class="mensaje">
+            Seleccione una línea para visualizar el cuadro horario.
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    Renfe Cantabria · Consulta de servicios mínimos
+</footer>
+
+<script>
+
+function mostrarHorario(){
+
+    const opcion = document.getElementById("horario").value;
+    const visor = document.getElementById("visor");
+
+    const imagenes = {
+
+        c1_sr : "imagenes/C1_Santander_Reinosa_Pag1.jpg",
+        c1_rs : "imagenes/C1_Reinosa_Santander_Pag2.jpg",
+
+        c2_sc : "imagenes/C2_Santander_Cabezon_Pag1.jpg",
+        c2_cs : "imagenes/C2_Cabezon_Santander_Pag2.jpg",
+
+        c3_sl : "imagenes/C3_Santander_Lierganes_Pag1.jpg",
+        c3_ls : "imagenes/C3_Lierganes_Santander_Pag2.jpg",
+
+        r2 : "imagenes/R2_Oviedo_Santander.jpg",
+
+        r3 : "imagenes/R3_Santander_Bilbao.jpg"
+    };
+
+    if(!opcion){
+
+        visor.innerHTML =
+        '<div class="mensaje">Seleccione una línea para visualizar el cuadro horario.</div>';
+
+        return;
+    }
+
+    visor.innerHTML =
+        '<img src="' + imagenes[opcion] + '" alt="Cuadro horario">';
+}
+
+</script>
+
+</body>
+</html>

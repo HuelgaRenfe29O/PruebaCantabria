@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuadros horarios</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f5f5;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+h1{
+    text-align:center;
+    color:#720019;
+}
+
+select{
+    width:100%;
+    max-width:500px;
+    padding:12px;
+    font-size:16px;
+    display:block;
+    margin:20px auto;
+}
+
+#visor{
+    text-align:center;
+    margin-top:20px;
+}
+
+#visor img{
+    max-width:100%;
+    height:auto;
+    border:1px solid #ccc;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Consulta de Cuadros Horarios</h1>
+
+<select id="sentido" onchange="mostrarHorario()">
+    <option value="">Seleccione un cuadro horario</option>
+    <option value="sr">C1 Santander → Reinosa</option>
+    <option value="rs">C1 Reinosa → Santander</option>
+</select>
+
+<div id="visor"></div>
+
+</div>
+
+<script>
+
+function mostrarHorario(){
+
+    const sentido = document.getElementById("sentido").value;
+    const visor = document.getElementById("visor");
+
+    if(sentido === "sr"){
+        visor.innerHTML = `
+            <img src="imagenes/C1_Santander_Reinosa_Pag1.jpg"
+                 alt="C1 Santander Reinosa">
+        `;
+    }
+
+    else if(sentido === "rs"){
+        visor.innerHTML = `
+            <img src="imagenes/C1_Reinosa_Santander_Pag2.jpg"
+                 alt="C1 Reinosa Santander">
+        `;
+    }
+
+    else{
+        visor.innerHTML = "";
+    }
+}
+
+</script>
+
+</body>
+</html>
